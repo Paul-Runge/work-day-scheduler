@@ -1,14 +1,10 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-
 // Current day
 var today = dayjs();
 // Save button
 var saveBtnEl = $('.saveBtn');
 
 // Display current day and date 
-$('#currentDay').text(today.format('dddd, MMM DD hh:mmA'));
+$('#currentDay').text(today.format('dddd, MMM DD'));
 
 // Event listener locally stores user input from hour-block textarea when the associated saveBtn is clicked.  If textarea is empty, nothing is saved.
 $(saveBtnEl).on('click', function () {
@@ -23,8 +19,7 @@ $(saveBtnEl).on('click', function () {
   localStorage.setItem(hour, task);
 })
 
-// Displays the local storage keys to their respective time-block textareas.
-// Would like to iterate through rather than individually match.  See comments after code block for example.
+// Displays the local storage items to their respective time-block textareas.
 $('#hour-9 .description').val(localStorage.getItem('hour-9'));
 $('#hour-10 .description').val(localStorage.getItem('hour-10'));
 $('#hour-11 .description').val(localStorage.getItem('hour-11'));
@@ -37,6 +32,7 @@ $('#hour-17 .description').val(localStorage.getItem('hour-17'));
 
 
 
+// Would like to iterate through rather than individually match.
 // Attempting to condense the previous code block into a single function that loops through localStorage, matches the keys to the html textarea element id, and prints the key value to that textarea.
 /*const displayTasks = () => {
   var description = $('.description').attr('id');
@@ -46,6 +42,7 @@ $('#hour-17 .description').val(localStorage.getItem('hour-17'));
     }
   }
 }*/
+
 // Check current time against each timeblock and add conditional classes to apply associated CSS (i.e. change colors if block is in past, present, or future).
 function editTimeBlock() {
   // Current hour in 24-hour format
@@ -54,7 +51,7 @@ function editTimeBlock() {
   $('.time-block').each(function () {
     // Target time-block by id and get only the integer of that id
     var timeBlockId = parseInt($(this).attr('id').split("hour-")[1]);
-    // Add classes based on conditionals
+    // Add CSS classes based on conditionals
     if (timeBlockId < currentHour) {
       $(this).addClass('past');
     }
@@ -71,7 +68,3 @@ function editTimeBlock() {
 }
 // Call Function
 editTimeBlock();
-displayTasks();
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?

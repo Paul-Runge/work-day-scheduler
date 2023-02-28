@@ -3,6 +3,7 @@ body {
   font-size: 16px;
 }
 
+/* Space for user logged tasks */
 textarea {
   background: transparent;
   border: none;
@@ -10,41 +11,41 @@ textarea {
   color: #000000;
   border-left: 1px solid black;
   padding: 10px;
-}
-
-.description {
   white-space: pre-wrap;
 }
 
+/* Time-block parent div */
 .time-block {
   border-radius: 15px;
-}
-
-.row {
   border-top: 1px solid white;
 }
 
+/* Time-block hour display */
 .hour {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
 }
 
+/* Style time-block that is before the current hour */
 .past {
   background-color: #d3d3d3;
   color: white;
 }
 
+/* Style time-block that matches the current hour */
 .present {
   background-color: #ff6961;
   color: white;
 }
 
+/* Style time-block that is after the current hour */
 .future {
   background-color: #77dd77;
   color: white;
 }
 
+/* Save button committing tasks to local storage */
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
